@@ -1,0 +1,9 @@
+create table ExpressUser(
+id int primary key auto_increment,
+number varchar(32) unique,
+username varchar(32),
+userPhone varchar(32),
+company varchar(32),
+code varchar(32),
+address varchar(32)
+);
