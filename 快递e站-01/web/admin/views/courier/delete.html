@@ -44,4 +44,43 @@
 			</div>
 		</div>
 	</body>
+	<script src="/qrcode/jquery2.1.4.js"></script>
+	<script src="/layer/layer.js"></script>
+	<script>
+		$(function () {
+			$("#find").click(function () {
+				let sysphone = $("input:eq(0)").val();
+
+				if (sysphone.length == 11) {
+					if (sysphone.test(/^(1[3,5,8,9])\d{9}$/g)) {
+						console.log(sysphone);
+						alert(sysphone);
+						return true;
+					} else {
+						return false;
+					}
+				}
+
+				$.post(
+						"/courier/delete.do",
+						{
+							sysphone:sysphone
+						},
+						function (data) {
+							if (data.status == 0) {
+								$("input:eq(1)").val(data.data.sysname);
+								$("input:eq(2)").val(data.data.sysPhone);
+								$("input:eq(3)").val(data.data.sysid);
+								$("input:eq(4)").val(data.data.syspassowrd);
+							} else {
+
+							}
+						}
+				);
+
+			});
+
+		});
+
+	</script>
 </html>

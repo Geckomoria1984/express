@@ -15,7 +15,7 @@ public class Express {
     private int status;
     private String sysPhone;
 
-    @Override
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -150,7 +150,7 @@ public class Express {
         this.sysPhone = sysPhone;
     }
 
-    public Express() {
+    public Express(String number, String company, String username, String userPhone) {
     }
 
     public Express(int id, String number, String username, String userPhone, String company, String code, Timestamp inTime, Timestamp outTime, int status, String sysPhone) {

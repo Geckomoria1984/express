@@ -14,9 +14,6 @@ public class BootStrapTableExpress {
     private String status;
     private String sysPhone;
 
-    public BootStrapTableExpress() {
-    }
-
     public BootStrapTableExpress(int id, String number, String username, String userPhone, String company, String code, String inTime, String outTime, String status, String sysPhone) {
         this.id = id;
         this.number = number;

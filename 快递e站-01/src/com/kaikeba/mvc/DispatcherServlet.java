@@ -39,7 +39,11 @@ public class DispatcherServlet extends HttpServlet {
         }
         switch (mapping.getType()){
             case TEXT:
-                resp.getWriter().write((String)result);
+                if (result != null) {
+                    resp.getWriter().write((String) result);
+                } else {
+                    System.out.println("“字符串为空");
+                }
                 break;
             case VIEW:
                 resp.sendRedirect((String)result);

@@ -23,6 +23,7 @@ public class AdminController {
             String ip = request.getRemoteAddr();
             Date date = new Date();
             AdminService.updateLoginTimeAndIp(username, date, ip);
+            request.getSession().setAttribute("adminUserName", username);
         } else {
             message = new Message("登陆失败", -1);
         }

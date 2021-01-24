@@ -58,33 +58,32 @@
         ,layer = layui.layer;
     </script>
     <script>
-        $(function(){
-            $("#form").submit(function(){
+        $(function () {
+            $("#form").submit(function () {
                 var windowId = layer.load();
                 var number = $("input:eq(0)").val();
-                var company = $("input:eq(1)").val();
-                var username = $("input:eq(2)").val();
-                var userPhone = $("input:eq(3)").val();
+                let company = $("input:eq(1)").val();
+                let username = $("input:eq(2)").val();
+                let userPhone = $("input:eq(3)").val();
                 $.post("/express/insert.do",{
                     number:number,
                     company:company,
-                    username:username,
-                    userPhone:userPhone
-                    },function(data){
-                        layer.close(windowId);
-                        layer.msg(data.result);
-                        if(data.status == 0){
-                            //录入成功
-                            $("input").val("");
-                            $("input:eq(1)").val("顺丰速运");
-                        }else{
-                            //录入失败
-                        }
-                });
+                    username: username,
+                    userPhone: userPhone
+                },
+                function (data) {
+                    layer.close(windowId);
+                    layer.msg(data.result);
+                    if (data.status == 0) {
+                        $("input:eq(1)").val("顺丰快递");
+                        $("input").val();
+                    } else {
 
-                return false;
+                    }
+                })
+
+
             });
-
 
         });
     </script>

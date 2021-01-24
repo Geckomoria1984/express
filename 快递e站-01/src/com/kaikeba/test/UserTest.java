@@ -1,7 +1,11 @@
 package com.kaikeba.test;
 
+import com.kaikeba.bean.Courier;
 import com.kaikeba.bean.Express;
+import com.kaikeba.dao.CourierDao;
+import com.kaikeba.dao.impl.CourierDaoMySql;
 import com.kaikeba.mvc.ResponseBody;
+import com.kaikeba.service.CourierService;
 import com.kaikeba.service.ExpressService;
 import com.kaikeba.util.DruidUtil;
 import org.junit.Test;
@@ -12,6 +16,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserTest {
     private String SQL = "insert into express (number,username,userphone,company,code,intime,outtime,status,sysphone) values(?,?,?,?,?,?,?,?,?)";
@@ -48,9 +53,27 @@ public class UserTest {
 
     @Test
     public void find() {
-        Express byNumber = ExpressService.findByNumber("123455");
+        Express byNumber = ExpressService.findByNumber("112233");
         System.out.println(byNumber);
     }
+
+    @Test
+    public void CourierFindAll() {
+        CourierDao dao = new CourierDaoMySql();
+        List<Courier> all = dao.findAll(true, 0, 1);
+        System.out.println(all);
+    }
+
+    @Test
+    public void courierInsert() {
+        CourierDao dao = new CourierDaoMySql();
+        Courier courier = new Courier("Jarry", "15145077766", "230403198411050119", "123456");
+        dao.insert(courier);
+    }
+
+
+
+
 
 }
 
